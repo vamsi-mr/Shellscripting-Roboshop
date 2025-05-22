@@ -74,5 +74,5 @@ VALIDATE $? "Copying mongodb.repo"
 dnf install mongodb-mongosh -y -y &>>$LOG_FILE
 VALIDATE $? "Installing MongoDB client"
 
-mongosh --host MONGODB-SERVER-IPADDRESS </app/db/master-data.js &>>$LOG_FILE
+mongosh --host mongodb.ravada.site </app/db/master-data.js &>>$LOG_FILE
 VALIDATE $? "Loading data to the catalogue"
