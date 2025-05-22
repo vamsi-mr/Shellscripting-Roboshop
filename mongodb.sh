@@ -1,20 +1,30 @@
 #/bin/bash
 
 USERID=$(id -u)
+R="\e[31m"
+g="\e[32m"
+y="\e[33m"
+N="\e[0m"
+LOGSFOLDER="/var/log/roboshop"
+SCRIPTNAME=$(echo $0 | cut -d "." -f1)
+LOGFILE=$LOGSFOLDER/$SCRIPTNAME.log
 
     if (USERID -ne 0)
     then    
-        echo "ERROR : Please run with root access"
+        echo -e "$R ERROR : Please run with root access $N"
         exit 1
     else    
-        echo "You are running with root access"
+        echo -e "$Y You are running with root access $N"
 fi
     
+        mkdir -p $LOGSFOLDER
+        echo "Script executing at : $(date)"
+
 VALIDATE () {
     if ($1 eq 0)
-        echo "$2 is ...... SUCCESS"
+        echo -e "$G $2 is ...... SUCCESS $N"
     else 
-        echo "$2 is ...... FAILURE"
+        echo -e "$R $2 is ...... FAILURE $N"
         exit 1
 fi
 }
