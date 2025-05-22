@@ -21,7 +21,7 @@ fi
         echo "Script executing at : $(date)"
 
 VALIDATE () {
-    if ($1 eq 0)
+    if [ $1 -eq 0 ]
         echo -e "$G $2 is ...... SUCCESS $N"
     else 
         echo -e "$R $2 is ...... FAILURE $N"
