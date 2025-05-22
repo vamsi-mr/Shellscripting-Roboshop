@@ -51,7 +51,7 @@ id roboshop
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
         VALIDATE $? "Creating Roboshop user"
     else 
-        echo -e "$YSystem user roboshop is already created ..... SKIPPING $N"
+        echo -e "$Y System user roboshop is already created ..... SKIPPING $N"
 fi
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOG_FILE
@@ -77,7 +77,7 @@ VALIDATE $? "Enabling Catalogue"
 systemctl start catalogue &>>$LOG_FILE
 VALIDATE $? "Starting Catalogue"
 
-cp mongodb.repo /etc/yum.repos.d/mongo.repo
+cp $SCRIPT_DIR/mongodb.repo /etc/yum.repos.d/mongo.repo
 VALIDATE $? "Copying mongodb.repo"
 
 dnf install mongodb-mongosh -y -y &>>$LOG_FILE
