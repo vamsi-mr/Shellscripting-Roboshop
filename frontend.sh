@@ -31,6 +31,8 @@ VALIDATE () {
 fi
 }
 
+#installing Nginx
+
 dnf module disable nginx -y &>>$LOG_FILE
 VALIDATE $? "Disabling Default Nginx"
 
