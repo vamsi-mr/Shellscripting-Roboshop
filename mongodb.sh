@@ -9,7 +9,7 @@ LOGSFOLDER="/var/log/roboshop"
 SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=$LOGSFOLDER/$SCRIPTNAME.log
 
-    if ($USERID -ne 0)
+    if [ $USERID -ne 0 ]
     then    
         echo -e "$R ERROR : Please run with root access $N" | tee -a $LOG_FILE
         exit 1

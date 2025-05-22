@@ -10,7 +10,7 @@ SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=$LOGSFOLDER/$SCRIPTNAME.log
 SCRIPT_DIR=$PWD
 
-    if ($USERID -ne 0)
+    if [ $USERID -ne 0 ]
     then    
         echo -e "$R ERROR : Please run with root access $N" | tee -a $LOG_FILE
         exit 1
@@ -50,7 +50,7 @@ rm -rf /usr/share/nginx/html/* &>>$LOG_FILE
 VALIDATE $? "Removing default content"
 
 curl -o /tmp/frontend.zip https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip &>>$LOG_FILE
-VALIDATE $? "Downloading frontend"cd /usr/share/nginx/html 
+VALIDATE $? "Downloading frontend"
 
 unzip /tmp/frontend.zip &>>$LOG_FILE
 VALIDATE $? "unzipping frontend"
