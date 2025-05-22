@@ -51,7 +51,8 @@ id roboshop
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
         VALIDATE $? "Creating Roboshop user"
     else 
-        echo -e "$Y System user roboshop is already created $N"
+        echo -e "$Y System user roboshop is already created ..... SKIPPING $N"
+fi
 
 curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip &>>$LOG_FILE
 VALIDATE $? "Downloading Catalogue file"
