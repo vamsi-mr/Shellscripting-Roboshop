@@ -10,6 +10,9 @@ SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=$LOGSFOLDER/$SCRIPTNAME.log
 SCRIPT_DIR=$PWD
 
+    mkdir -p $LOGSFOLDER
+    echo "Script executed at : $(date)" | tee -a $LOG_FILE
+
     if [ $USERID -ne 0 ]
     then    
         echo -e "$R ERROR : Please run with root access $N" | tee -a $LOG_FILE
@@ -18,8 +21,6 @@ SCRIPT_DIR=$PWD
         echo -e "$Y You are running with root access $N" | tee -a $LOG_FILE
 fi
     
-        mkdir -p $LOGSFOLDER
-        echo "Script executed at : $(date)" | tee -a $LOG_FILE
 
 VALIDATE () {
     if [ $1 -eq 0 ]
