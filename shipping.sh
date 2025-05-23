@@ -77,7 +77,7 @@ SCRIPT_DIR=$PWD
     VALIDATE $? "Starting Shipping"
 
 
-    mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD -e &>>$LOG_FILE
+    mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD &>>$LOG_FILE
     if [ $? -eq 0 ]
     then
         mysql -h mysql.daws84s.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
