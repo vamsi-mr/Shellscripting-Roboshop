@@ -1,5 +1,6 @@
 #/bin/bash
 
+START_TIME=$(date +%s)
 USERID=$(id -u)
 R="\e[31m"
 g="\e[32m"
@@ -48,3 +49,8 @@ VALIDATE $? "Editing MOngoDB configuration file to enable remote connections"
 
 systemctl restart mongod &>>$LOG_FILE
 VALIDATE $? "Restarting MongoDB"
+
+END_TIME=$(date +%s)
+TOTAL_TIME=$(( $END_TIME - $START_TIME ))
+
+echo "Script execution completed successfully, $Y time taken: $TOTAL_TIME seconds $N" | tee -a $LOG_FILE
