@@ -21,9 +21,6 @@ SCRIPT_DIR=$PWD
     else    
         echo -e "{$Y} You are running with root access {$N}" | tee -a $LOG_FILE
     fi
-    
-    echo "Please enter rabbitmq password to setup"
-    read -s RABBITMQ_PASSWD
 
     VALIDATE () {
     if [ $1 -eq 0 ]
@@ -47,7 +44,7 @@ SCRIPT_DIR=$PWD
     systemctl start rabbitmq-server &>>$LOG_FILE
     VALIDATE $? "Starting RabbitMQ"
 
-    rabbitmqctl add_user roboshop $RABBITMQ_PASSWD &>>$LOG_FILE
+    rabbitmqctl add_user roboshop roboshop123 &>>$LOG_FILE
     rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$LOG_FILE
 
     END_TIME=$(date +%s)
