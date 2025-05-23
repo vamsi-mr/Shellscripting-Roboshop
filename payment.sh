@@ -11,8 +11,8 @@ SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=$LOGSFOLDER/$SCRIPTNAME.log
 SCRIPT_DIR=$PWD
 
-        mkdir -p $LOGSFOLDER
-        echo "Script executed at : $(date)" | tee -a $LOG_FILE
+    mkdir -p $LOGSFOLDER
+    echo "Script executed at : $(date)" | tee -a $LOG_FILE
 
     if [ $USERID -ne 0 ]
     then    
@@ -20,21 +20,20 @@ SCRIPT_DIR=$PWD
         exit 1
     else    
         echo -e "{$Y} You are running with root access {$N}" | tee -a $LOG_FILE
-fi
+    fi
     
 
-VALIDATE () {
+    VALIDATE () {
     if [ $1 -eq 0 ]
     then
         echo -e "{$G} $2 is ...... SUCCESS {$N}" | tee -a $LOG_FILE
     else 
         echo -e "{$R} $2 is ...... FAILURE {$N}" | tee -a $LOG_FILE
         exit 1
-fi
-}
+    fi
+    }
 
-
-    dnf install python3 gcc python3-devel -y
+    dnf install python3 gcc python3-devel -y &>>$LOG_FILE
     VALIDATE $? "Install Python3 packages"
 
     mkdir -p /app &>>$LOG_FILE
