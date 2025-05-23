@@ -37,6 +37,9 @@ SCRIPT_DIR=$PWD
     dnf install maven -y
     VALIDATE $? "Installing Maven and Java"
 
+    mkdir -p /app &>>$LOG_FILE
+    VALIDATE $? "Creating App directory"
+
     id roboshop
         if [ $? -ne 0 ]
         then
