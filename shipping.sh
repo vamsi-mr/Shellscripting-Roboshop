@@ -11,6 +11,8 @@ SCRIPTNAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE=$LOGSFOLDER/$SCRIPTNAME.log
 SCRIPT_DIR=$PWD
 
+    mkdir -p $LOGSFOLDER
+    echo "Script executed at : $(date)" | tee -a $LOG_FILE
 
     if [ $USERID -ne 0 ]
     then    
