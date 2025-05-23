@@ -76,8 +76,10 @@ SCRIPT_DIR=$PWD
     systemctl start shipping &>>$LOG_FILE
     VALIDATE $? "Starting Shipping"
 
+    dnf install mysql -y  &>>$LOG_FILE
+    VALIDATE $? "Install MySQL"
 
-    mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD &>>$LOG_FILE
+    mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities' &>>$LOG_FILE
     if [ $? -eq 0 ]
     then
         mysql -h mysql.daws84s.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
