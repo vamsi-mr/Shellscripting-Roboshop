@@ -46,7 +46,7 @@ VALIDATE $? "Enabling redis"
 systemctl start redis &>>$LOG_FILE
 VALIDATE $? "Starting redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' -e '/protected mode yes/protected mode no/g' /etc/redis/redis.conf &>>$LOG_FILE
+sed -i -e 's/127.0.0.1/0.0.0.0/g' -e '/protected mode yes/protected mode no/g' /etc/redis/redis.conf &>>$LOG_FILE
 VALIDATE $? "Editing redis configuration file to enable remote connections"
 
 systemctl restart redis &>>$LOG_FILE
