@@ -37,6 +37,8 @@ fi
     dnf install python3 gcc python3-devel -y
     VALIDATE $? "Install Python3 packages"
 
+    mkdir -p /app &>>$LOG_FILE
+    VALIDATE $? "Creating App directory"
 
     id roboshop
         if [ $? -ne 0 ]
