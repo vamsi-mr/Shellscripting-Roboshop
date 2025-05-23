@@ -80,7 +80,7 @@ SCRIPT_DIR=$PWD
     VALIDATE $? "Install MySQL"
 
     mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities' &>>$LOG_FILE
-    if [ $? -eq 0 ]
+    if [ $? -ne 0 ]
     then
         mysql -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
         mysql -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql  &>>$LOG_FILE
