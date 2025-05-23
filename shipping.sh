@@ -82,9 +82,9 @@ SCRIPT_DIR=$PWD
     mysql_secure_installation -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD -e 'use cities' &>>$LOG_FILE
     if [ $? -eq 0 ]
     then
-        mysql -h mysql.daws84s.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
-        mysql -h mysql.daws84s.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql  &>>$LOG_FILE
-        mysql -h mysql.daws84s.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$LOG_FILE
+        mysql -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
+        mysql -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql  &>>$LOG_FILE
+        mysql -h mysql.ravada.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/master-data.sql &>>$LOG_FILE
         VALIDATE $? "Loading data into MySQL"
     else
         echo -e "Data is already loaded into MySQL ... $Y SKIPPING $N"
